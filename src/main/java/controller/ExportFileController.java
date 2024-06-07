@@ -28,9 +28,9 @@ public class ExportFileController {
     @FXML
     private MenuItem home;
     @FXML
-    private MenuItem viewProfile; // Corresponds to the Menu item "viewProfile" in HomeView.fxml
+    private MenuItem viewProfile;
     @FXML
-    private MenuItem updateProfile; // // Corresponds to the Menu item "updateProfile" in HomeView.fxml
+    private MenuItem updateProfile;
     @FXML
     private MenuItem placeOrder;
     @FXML
@@ -70,7 +70,7 @@ public class ExportFileController {
             if (currentUser != null) {
                 ArrayList<Order> orders = model.getUserDao().getOrdersByUsername(currentUser.getUsername());
                 for (Order order : orders) {
-                    ordersListView.getItems().add(order.toString());  // Customize toString in Order for better display
+                    ordersListView.getItems().add(order.toString());
                 }
             } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -254,7 +254,7 @@ public class ExportFileController {
                 writer.append(", Status\n");
 
                 for (int orderId : orderIds) {
-                    Order order = model.getUserDao().getOrderById(orderId); // Implement this method in UserDaoImpl
+                    Order order = model.getUserDao().getOrderById(orderId);
                     if (order != null) {
                         writer.append(String.valueOf(order.getOrderId())).append(", ").append(order.getUsername());
                         if (itemsCheckBox.isSelected()) writer.append(", ").append(String.valueOf(order.getBurritonumber())).append(", ").append(String.valueOf(order.getFriesnumber())).append(", ").append(String.valueOf(order.getSodanumber())).append(", ").append(String.valueOf(order.getMealnumber()));

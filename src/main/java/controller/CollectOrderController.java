@@ -23,9 +23,9 @@ public class CollectOrderController {
     @FXML
     private MenuItem home;
     @FXML
-    private MenuItem viewProfile; // Corresponds to the Menu item "viewProfile" in HomeView.fxml
+    private MenuItem viewProfile;
     @FXML
-    private MenuItem updateProfile; // // Corresponds to the Menu item "updateProfile" in HomeView.fxml
+    private MenuItem updateProfile;
     @FXML
     private MenuItem placeOrder;
     @FXML
@@ -241,7 +241,7 @@ public class CollectOrderController {
 
         try {
             int orderId = Integer.parseInt(orderIdText);
-            Order order = model.getUserDao().getOrderById(orderId); // Add this method in your UserDao class
+            Order order = model.getUserDao().getOrderById(orderId);
             if (order == null) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");

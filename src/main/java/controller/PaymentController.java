@@ -24,9 +24,9 @@ public class PaymentController {
     @FXML
     private MenuItem home;
     @FXML
-    private MenuItem viewProfile; // Corresponds to the Menu item "viewProfile" in HomeView.fxml
+    private MenuItem viewProfile;
     @FXML
-    private MenuItem updateProfile; // // Corresponds to the Menu item "updateProfile" in HomeView.fxml
+    private MenuItem updateProfile;
     @FXML
     private MenuItem placeOrder;
     @FXML
@@ -240,7 +240,7 @@ public class PaymentController {
             alert.showAndWait();
         } else {
             try {
-                // Retrieve the current user
+
                 User currentUser = model.getCurrentUser();
 
                 if (currentUser != null) {
@@ -248,10 +248,10 @@ public class PaymentController {
                     UserandOrder userFromDB = model.getUserDao().getorderUserByUsername(currentUser.getUsername());
 
                     if (userFromDB != null) {
-                        // Debugging: Print user details to ensure correct values
+
                         System.out.println("User Details: " + userFromDB.getUsername() + ", " + userFromDB.getBurritonumber() + ", " + userFromDB.getFriesnumber() + ", " + userFromDB.getSodanumber() + ", " + userFromDB.getMealnumber() + ", " + userFromDB.getTotalprice() + ", " + userFromDB.getWaitingtime());
 
-                        // Create the order in the database
+
                         model.getUserDao().createOrder(userFromDB.getUsername(), userFromDB.getBurritonumber(), userFromDB.getFriesnumber(), userFromDB.getSodanumber(), userFromDB.getMealnumber(), userFromDB.getTotalprice(), userFromDB.getWaitingtime());
 
                         // Success alert
@@ -261,10 +261,10 @@ public class PaymentController {
                         alert.setContentText("Payment has been successfully processed and the order has been placed.");
                         alert.showAndWait();
 
-                        // Clear user data
+
                         currentUser.clearData();
 
-                        // Update the model's current user
+
                         model.setCurrentUser(currentUser);
                     } else {
                         throw new NullPointerException("User not found in the database.");
@@ -274,7 +274,7 @@ public class PaymentController {
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                // Error alert
+
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Payment Error");
                 alert.setHeaderText(null);

@@ -27,9 +27,9 @@ public class ViewOrderController {
     @FXML
     private MenuItem home;
     @FXML
-    private MenuItem viewProfile; // Corresponds to the Menu item "viewProfile" in HomeView.fxml
+    private MenuItem viewProfile;
     @FXML
-    private MenuItem updateProfile; // // Corresponds to the Menu item "updateProfile" in HomeView.fxml
+    private MenuItem updateProfile;
     @FXML
     private MenuItem placeOrder;
     @FXML
@@ -60,7 +60,7 @@ public class ViewOrderController {
             if (currentUser != null) {
                 ArrayList<Order> orders = model.getUserDao().getOrdersByUsername(currentUser.getUsername());
                 for (Order order : orders) {
-                    ordersListView.getItems().add(order.toString());  // Customize toString in Order for better display
+                    ordersListView.getItems().add(order.toString());
                 }
             } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);

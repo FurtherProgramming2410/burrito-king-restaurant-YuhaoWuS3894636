@@ -22,9 +22,9 @@ public class PlaceOrderController {
     @FXML
     private MenuItem home;
     @FXML
-    private MenuItem viewProfile; // Corresponds to the Menu item "viewProfile" in HomeView.fxml
+    private MenuItem viewProfile;
     @FXML
-    private MenuItem updateProfile; // Corresponds to the Menu item "updateProfile" in HomeView.fxml
+    private MenuItem updateProfile;
     @FXML
     private MenuItem placeOrder;
     @FXML
@@ -83,7 +83,7 @@ public class PlaceOrderController {
                             double totalprice = 7 * user.getBurritonumber() + 4 * user.getFriesnumber() + 2.5 * user.getSodanumber() - (3 * user.getMealnumber());
 
 
-                            // Update the database with the new price and waiting time
+
                             double waitingTime = calculateWaitingTime(user);
 
                             UserandOrder userAndOrder = new UserandOrder();
@@ -163,11 +163,11 @@ public class PlaceOrderController {
                             status.setText("Empty burrito, fries, or soda number");
                             status.setTextFill(Color.RED);
                         }
-                        // Calculate total price
+
 
                         //model.setCurrentUser(user);
 
-                        // Navigate to Order Confirm View
+
                         try {
                             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/OrderconfirmView.fxml"));
                             OrderconfirmController orderconfirmController = new OrderconfirmController(stage, model);

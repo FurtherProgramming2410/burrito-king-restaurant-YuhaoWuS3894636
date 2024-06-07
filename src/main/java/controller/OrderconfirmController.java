@@ -25,9 +25,9 @@ public class OrderconfirmController {
     @FXML
     private ListView<String> ordersListView;
     @FXML
-    private MenuItem viewProfile; // Corresponds to the Menu item "viewProfile" in HomeView.fxml
+    private MenuItem viewProfile;
     @FXML
-    private MenuItem updateProfile; // // Corresponds to the Menu item "updateProfile" in HomeView.fxml
+    private MenuItem updateProfile;
     @FXML
     private MenuItem placeOrder;
     @FXML
@@ -58,7 +58,7 @@ public class OrderconfirmController {
             if (currentUser != null) {
                 ArrayList<User> users = model.getUserDao().getUsersByUsername(currentUser.getUsername());
                 for (User user1 : users) {
-                    ordersListView.getItems().add(user1.toString());  // Customize toString in Order for better display
+                    ordersListView.getItems().add(user1.toString());
                 }
             } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
