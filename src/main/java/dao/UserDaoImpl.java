@@ -22,6 +22,7 @@ public class UserDaoImpl implements UserDao {
 		System.out.println("Setting up the database...");
 		try (Connection connection = Database.getConnection();
 			 Statement stmt = connection.createStatement()) {
+			String sqlDropuserTable = "DROP TABLE users;";
 
 			String sqlCreateTable = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME +
 					" (username VARCHAR(10) NOT NULL," +
@@ -37,7 +38,9 @@ public class UserDaoImpl implements UserDao {
 					" email VARCHAR(100)," +
 					" status VARCHAR(10) DEFAULT 'nonvip'," +
 					" PRIMARY KEY (username))";
+			stmt.executeUpdate(sqlDropuserTable);
 			stmt.executeUpdate(sqlCreateTable);
+
 
 			if (!columnExists(connection, TABLE_NAME, "email")) {
 				stmt.executeUpdate("ALTER TABLE " + TABLE_NAME + " ADD COLUMN email VARCHAR(100)");
@@ -48,7 +51,7 @@ public class UserDaoImpl implements UserDao {
 			if (!columnExists(connection, TABLE_NAME, "status")) {
 				stmt.executeUpdate("ALTER TABLE " + TABLE_NAME + " ADD COLUMN status VARCHAR(10) DEFAULT 'nonvip'");
 			}
-
+			String sqlDroporderTable = "DROP TABLE orders;";
 			String sqlCreateOrdersTable = "CREATE TABLE IF NOT EXISTS orders (" +
 					"orderId INTEGER PRIMARY KEY AUTOINCREMENT," +
 					"username VARCHAR(10) NOT NULL," +
@@ -59,8 +62,9 @@ public class UserDaoImpl implements UserDao {
 					"totalprice DOUBLE," +
 					"waitingTime DOUBLE," +
 					"orderTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP," +
-					"status VARCHAR(20) DEFAULT 'placed'," +  // Add this line
+					"status VARCHAR(20) DEFAULT 'placed'," +
 					"FOREIGN KEY (username) REFERENCES users(username))";
+			stmt.executeUpdate(sqlDroporderTable);
 			stmt.executeUpdate(sqlCreateOrdersTable);
 
 			if (!columnExists(connection, "orders", "status")) {

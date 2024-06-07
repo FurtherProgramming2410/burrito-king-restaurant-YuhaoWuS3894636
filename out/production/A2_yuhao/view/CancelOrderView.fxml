@@ -49,7 +49,7 @@
 
 
         <ListView fx:id="ordersListView" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="472.0" />
-        <TextField fx:id="orderIdTextField" layoutX="14.0" layoutY="220.0" prefWidth="200.0" promptText="Enter Order ID to Collect" />
+        <TextField fx:id="orderIdTextField" layoutX="14.0" layoutY="220.0" prefWidth="200.0" promptText="Enter Order ID to Cancel" />
         <Button fx:id="update" contentDisplay="CENTER" maxHeight="30.0" maxWidth="60.0" text="Update" />
 
     </children>

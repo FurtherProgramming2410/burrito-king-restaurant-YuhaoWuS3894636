@@ -49,7 +49,7 @@
 
 
 
-        <TextField fx:id="emailfield" layoutX="14.0" layoutY="220.0" prefWidth="200.0" promptText="Enter Order ID to Collect" />
+        <TextField fx:id="emailfield" layoutX="14.0" layoutY="220.0" prefWidth="200.0" promptText="Enter Email" />
         <Button fx:id="update" contentDisplay="CENTER" maxHeight="30.0" maxWidth="60.0" text="Update" />
 
     </children>
